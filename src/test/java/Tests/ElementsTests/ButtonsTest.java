@@ -1,4 +1,4 @@
-package Tests;
+package Tests.ElementsTests;
 
 import Base.BaseTest;
 import Pages.ElementsPages.ButtonsPage;

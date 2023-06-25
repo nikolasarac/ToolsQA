@@ -47,6 +47,10 @@ public class BaseTest {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waitForInvisibility(WebElement element) {
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
     public void waitForClickability(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }

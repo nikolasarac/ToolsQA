@@ -1,4 +1,4 @@
-package Tests;
+package Tests.BookStoreTests;
 
 import Base.BaseTest;
 import Pages.HomepagePage;
