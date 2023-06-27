@@ -75,6 +75,11 @@ public class BaseTest {
         ImageIO.write(saveImage, "png", new File(location + System.currentTimeMillis() + ".png"));
     }
 
+    public void closeAlert() throws InterruptedException {
+        Thread.sleep(1000);
+        driver.switchTo().alert().accept();
+    }
+
     @AfterClass
     public void tearDown() {
         //driver.manage().deleteAllCookies();
