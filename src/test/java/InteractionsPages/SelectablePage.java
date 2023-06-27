@@ -28,7 +28,7 @@ public class SelectablePage extends BaseTest {
     @FindBy(css = ".mt-2.list-group-item.list-group-item-action")
     public List<WebElement> listGroupItems;
 
-    @FindBy(css = ".list-group-item.list-group-item-action")
+    @FindBy(xpath = "//*[starts-with(@class, 'list-group-item')]")
     public List<WebElement> gridGroupItems;
 
     //=========== METODE ============
@@ -42,6 +42,16 @@ public class SelectablePage extends BaseTest {
 
     public WebElement selectListItem(String itemText) {
         for (WebElement item : listGroupItems) {
+            if (item.getText().equals(itemText)) {
+                item.click();
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public WebElement selectGridItem(String itemText) {
+        for (WebElement item : gridGroupItems) {
             if (item.getText().equals(itemText)) {
                 item.click();
                 return item;
