@@ -19,6 +19,12 @@ public class ProfilePage extends BaseTest {
     @FindBy(css = ".text-right.button.di")
     public WebElement deleteAllBooksButton;
 
+    @FindBy(id = "delete-record-undefined")
+    public WebElement trashCanIcon;
+
+    @FindBy(id = "closeSmallModal-ok")
+    public WebElement confirmDeleteAllBooksButton;
+
     @FindBy(id = "userName-value")
     public WebElement usernameText;
 
@@ -41,8 +47,11 @@ public class ProfilePage extends BaseTest {
         logOutButton.click();
     }
 
-    public void deleteAllBooks() throws InterruptedException {
+    public void deleteAllBooks() {
         deleteAllBooksButton.click();
-        closeAlert();
+    }
+
+    public void confirmDeleteAllBooks() {
+        confirmDeleteAllBooksButton.click();
     }
 }
