@@ -86,4 +86,52 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.invalidCredentialsMessage.getText(), errorMessage);
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
+
+    @Test (priority = 40)
+    public void userCannotLoginWithEmptyUsernameField() {
+        validPassword = excelReader.getStringData("Login", 1,1);
+        expectedURL = homeURL + "login";
+
+        driver.manage().deleteAllCookies();
+        homepagePage.clickOnCard("Book Store Application");
+        sidebar.clickOnSidebarButton("Login");
+        loginPage.insertUsername("");
+        loginPage.insertPassword(validPassword);
+        loginPage.clickOnLoginButton();
+
+        Assert.assertTrue(elementIsPresent(loginPage.loginButton));
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+    }
+
+    @Test (priority = 50)
+    public void userCannotLoginWithEmptyPasswordField() {
+        validUsername = excelReader.getStringData("Login", 1,0);
+        expectedURL = homeURL + "login";
+
+        driver.manage().deleteAllCookies();
+        homepagePage.clickOnCard("Book Store Application");
+        sidebar.clickOnSidebarButton("Login");
+        loginPage.insertUsername(validUsername);
+        loginPage.insertPassword("");
+        loginPage.clickOnLoginButton();
+
+        Assert.assertTrue(elementIsPresent(loginPage.loginButton));
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+    }
+
+    @Test (priority = 60)
+    public void userCannotLoginWithEmptyUsernameAndPasswordField() {
+        validUsername = excelReader.getStringData("Login", 1,0);
+        expectedURL = homeURL + "login";
+
+        driver.manage().deleteAllCookies();
+        homepagePage.clickOnCard("Book Store Application");
+        sidebar.clickOnSidebarButton("Login");
+        loginPage.insertUsername("");
+        loginPage.insertPassword("");
+        loginPage.clickOnLoginButton();
+
+        Assert.assertTrue(elementIsPresent(loginPage.loginButton));
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+    }
 }
